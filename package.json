@@ -8,7 +8,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "cds-serve",
+    "start": "cds serve",
     "watch": "cds watch",
     "build": "cds build --production",
     "deploy": "cds deploy"
@@ -26,7 +26,7 @@
       "db": {
         "kind": "sqlite",
         "credentials": {
-          "database": "db/data.db"
+          "database": "cap-project/db/data.db"
         }
       }
     }
