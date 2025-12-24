@@ -1,0 +1,31 @@
+ID;moduleID;course_ID;title;description;duration;sequenceNumber;contentType
+1;MOD001;1;Introduction to S/4HANA;Overview of SAP S/4HANA and its benefits;60;1;Video
+2;MOD002;1;S/4HANA Architecture;Technical architecture and components;90;2;Video
+3;MOD003;1;Simplification List;Understanding the simplification list;45;3;Document
+4;MOD004;1;Quiz: S/4HANA Basics;Test your S/4HANA knowledge;30;4;Quiz
+5;MOD005;2;ABAP Syntax Review;Modern ABAP syntax and conventions;75;1;Video
+6;MOD006;2;CDS Views Introduction;Creating and using CDS views;120;2;Interactive
+7;MOD007;2;AMDP Development;ABAP Managed Database Procedures;90;3;Video
+8;MOD008;2;Unit Testing in ABAP;ABAP unit test framework;60;4;Interactive
+9;MOD009;3;Fiori Elements Overview;Introduction to Fiori Elements;45;1;Video
+10;MOD010;3;List Report Application;Building List Report apps;120;2;Interactive
+11;MOD011;3;Object Page Design;Creating Object Pages;90;3;Interactive
+12;MOD012;3;Annotations Deep Dive;CDS and OData annotations;105;4;Video
+13;MOD013;4;BTP Fundamentals;BTP architecture and services;60;1;Video
+14;MOD014;4;Cloud Foundry Basics;Cloud Foundry environment;75;2;Video
+15;MOD015;5;CAP Overview;Introduction to CAP framework;45;1;Video
+16;MOD016;5;Creating CDS Models;Data modeling with CAP;90;2;Interactive
+17;MOD017;5;Service Implementation;Implementing OData services;120;3;Interactive
+18;MOD018;5;Deploying CAP Apps;Deployment to BTP;75;4;Video
+19;MOD019;6;Integration Suite Overview;SAP Integration Suite introduction;60;1;Video
+20;MOD020;6;Building Integration Flows;Creating and configuring iFlows;135;2;Interactive
+21;MOD021;7;SAC Introduction;Getting started with SAC;45;1;Video
+22;MOD022;7;Creating Stories;Building SAC stories;90;2;Interactive
+23;MOD023;7;Data Modeling in SAC;SAC data modeling;75;3;Video
+24;MOD024;8;Performance Optimization;ABAP performance tuning;120;1;Video
+25;MOD025;8;Debugging Techniques;Advanced debugging methods;90;2;Interactive
+26;MOD026;9;Workflow Basics;Workflow Management introduction;60;1;Video
+27;MOD027;9;Building Workflows;Creating business workflows;105;2;Interactive
+28;MOD028;10;Mobile Services Setup;Setting up SAP Mobile Services;60;1;Video
+29;MOD029;10;Mobile App Development;Building mobile apps with SDK;120;2;Interactive
+30;MOD030;11;HANA Administration;Database administration tasks;135;1;Interactive

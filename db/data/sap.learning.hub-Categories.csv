@@ -1,0 +1,11 @@
+ID;categoryID;name;description;parentCategory_ID;icon;sortOrder
+1;CAT001;SAP S/4HANA;Enterprise Resource Planning with SAP S/4HANA;;sap-icon://business-suite;1
+2;CAT002;SAP BTP;SAP Business Technology Platform and Cloud Services;;sap-icon://cloud;2
+3;CAT003;SAP Fiori;User Experience and Fiori Development;;sap-icon://palette;3
+4;CAT004;ABAP;ABAP Programming and Development;;sap-icon://syntax;4
+5;CAT005;Integration;System Integration and Middleware;;sap-icon://connected;5
+6;CAT006;Analytics;Analytics and Business Intelligence;;sap-icon://business-objects-experience;6
+7;CAT007;Mobile;Mobile Application Development;;sap-icon://iphone;7
+8;CAT008;Database;SAP HANA and Database Management;1;sap-icon://database;8
+9;CAT009;Security;Security and Authorization;;sap-icon://shield;9
+10;CAT010;AI & ML;Artificial Intelligence and Machine Learning;2;sap-icon://learning-assistant;10

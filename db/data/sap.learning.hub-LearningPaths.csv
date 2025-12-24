@@ -1,0 +1,7 @@
+ID;pathID;name;description;level;estimatedDuration;status;createdDate;thumbnailURL
+1;LP001;SAP S/4HANA Developer Path;Complete learning path for becoming an SAP S/4HANA developer;Intermediate;180;Active;2024-01-10;https://example.com/thumbnails/lp-s4hana-dev.jpg
+2;LP002;SAP BTP Full Stack Developer;Comprehensive path for full-stack development on SAP BTP;Advanced;220;Active;2024-01-15;https://example.com/thumbnails/lp-btp-fullstack.jpg
+3;LP003;SAP Fiori Developer Journey;Master SAP Fiori development from basics to advanced;Intermediate;150;Active;2024-02-01;https://example.com/thumbnails/lp-fiori-journey.jpg
+4;LP004;SAP Integration Specialist;Become an expert in SAP integration technologies;Advanced;160;Active;2024-02-10;https://example.com/thumbnails/lp-integration.jpg
+5;LP005;SAP Analytics Professional;Learn analytics and BI with SAP tools;Intermediate;120;Active;2024-03-01;https://example.com/thumbnails/lp-analytics.jpg
+6;LP006;SAP Beginner to Professional;Complete beginner path covering SAP fundamentals;Beginner;200;Active;2024-01-05;https://example.com/thumbnails/lp-beginner.jpg

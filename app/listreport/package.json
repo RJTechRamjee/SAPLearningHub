@@ -1,0 +1,17 @@
+{
+  "name": "listreport",
+  "version": "1.0.0",
+  "description": "List Report and Object Page for Courses",
+  "scripts": {
+    "build": "ui5 build --clean-dest"
+  },
+  "devDependencies": {
+    "@sap/ux-ui5-tooling": "^1",
+    "@ui5/cli": "^3"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SAP Learning Hub</title>
+
+    <script>
+        window["sap-ushell-config"] = {
+            defaultRenderer: "fiori2",
+            bootstrapPlugins: {
+                "RuntimeAuthoringPlugin": {
+                    component: "sap.ushell.plugins.rta",
+                    config: {
+                        validateAppVersion: false
+                    }
+                },
+                "PersonalizePlugin": {
+                    component: "sap.ushell.plugins.rta-personalize",
+                    config: {
+                        validateAppVersion: false
+                    }
+                }
+            },
+            renderers: {
+                fiori2: {
+                    componentData: {
+                        config: {
+                            enableSearch: false,
+                            rootIntent: "Shell-home"
+                        }
+                    }
+                }
+            },
+            services: {
+                "LaunchPage": {
+                    "adapter": {
+                        "config": {
+                            "groups": [{
+                                "tiles": [
+                                    {
+                                        "tileType": "sap.ushell.ui.tile.StaticTile",
+                                        "properties": {
+                                            "title": "Course Catalog",
+                                            "subtitle": "Browse Courses",
+                                            "infoState": "Neutral",
+                                            "info": "List Report",
+                                            "icon": "sap-icon://course-book",
+                                            "targetURL": "#listreport-display"
+                                        }
+                                    },
+                                    {
+                                        "tileType": "sap.ushell.ui.tile.StaticTile",
+                                        "properties": {
+                                            "title": "Learning Paths",
+                                            "subtitle": "View Learning Paths",
+                                            "infoState": "Neutral",
+                                            "info": "Hierarchical View",
+                                            "icon": "sap-icon://map-2",
+                                            "targetURL": "#treeview-display"
+                                        }
+                                    },
+                                    {
+                                        "tileType": "sap.ushell.ui.tile.StaticTile",
+                                        "properties": {
+                                            "title": "Course Analytics",
+                                            "subtitle": "Analytics & Insights",
+                                            "infoState": "Positive",
+                                            "info": "Analytical List Page",
+                                            "icon": "sap-icon://business-objects-experience",
+                                            "targetURL": "#analytics-display"
+                                        }
+                                    }
+                                ]
+                            }]
+                        }
+                    }
+                },
+                "ClientSideTargetResolution": {
+                    "adapter": {
+                        "config": {
+                            "inbounds": {
+                                "listreport-display": {
+                                    "semanticObject": "listreport",
+                                    "action": "display",
+                                    "title": "Course Catalog",
+                                    "signature": {
+                                        "parameters": {}
+                                    }
+                                },
+                                "treeview-display": {
+                                    "semanticObject": "treeview",
+                                    "action": "display",
+                                    "title": "Learning Paths",
+                                    "signature": {
+                                        "parameters": {}
+                                    }
+                                },
+                                "analytics-display": {
+                                    "semanticObject": "analytics",
+                                    "action": "display",
+                                    "title": "Course Analytics",
+                                    "signature": {
+                                        "parameters": {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "NavTargetResolution": {
+                    "config": {
+                        "enableClientSideTargetResolution": true
+                    }
+                }
+            }
+        };
+    </script>
+
+    <script src="https://ui5.sap.com/1.120.0/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+    <script src="https://ui5.sap.com/1.120.0/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-frameOptions="allow"
+        data-sap-ui-bindingSyntax="complex"
+    ></script>
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            sap.ushell.Container.createRenderer().placeAt("content");
+        });
+    </script>
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

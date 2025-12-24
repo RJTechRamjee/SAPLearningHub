@@ -1,0 +1,21 @@
+ID;topicID;name;description;category_ID
+1;TOP001;S/4HANA Architecture;Core architecture concepts of S/4HANA;1
+2;TOP002;Fiori Launchpad;Fiori Launchpad configuration and customization;3
+3;TOP003;CDS Views;Core Data Services and data modeling;4
+4;TOP004;OData Services;OData protocol and service development;5
+5;TOP005;SAPUI5 Framework;SAPUI5 framework fundamentals;3
+6;TOP006;Cloud Foundry;Cloud Foundry environment on BTP;2
+7;TOP007;Workflow Automation;Business process automation;2
+8;TOP008;SAC Dashboards;Dashboard creation in SAP Analytics Cloud;6
+9;TOP009;HANA SQL;SQL scripting for SAP HANA;8
+10;TOP010;AMDP;ABAP Managed Database Procedures;4
+11;TOP011;Authorization Objects;SAP authorization and security;9
+12;TOP012;Machine Learning;ML models and AI services;10
+13;TOP013;CAP Framework;Cloud Application Programming Model;2
+14;TOP014;REST APIs;RESTful API development;5
+15;TOP015;Fiori Elements;Fiori Elements framework;3
+16;TOP016;ABAP RESTful Programming;RAP - RESTful ABAP Programming;4
+17;TOP017;Mobile SDK;SAP Mobile Services SDK;7
+18;TOP018;Integration Flows;Cloud Integration flow development;5
+19;TOP019;Data Modeling;Data modeling best practices;8
+20;TOP020;UI5 Web Components;Web components in UI5;3
