@@ -1,0 +1,46 @@
+_schema-version: '3.1'
+ID: sap-learning-hub
+version: 1.0.0
+description: "SAP Learning Hub - CAP and ABAP Projects"
+parameters:
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npm run build
+
+modules:
+  # CAP Service Module
+  - name: sap-learning-hub-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: sap-learning-hub-db
+
+  # Database Deployer Module
+  - name: sap-learning-hub-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: sap-learning-hub-db
+
+resources:
+  # HDI Container
+  - name: sap-learning-hub-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

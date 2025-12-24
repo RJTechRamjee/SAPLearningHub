@@ -1,0 +1,52 @@
+# CAP Project - Node.js dependencies and generated files
+node_modules/
+gen/
+*.log
+npm-debug.log*
+package-lock.json
+
+# CAP - Database and deployment
+*.db
+.cds_gen.log
+default-*.json
+.env
+
+# MTA Build artifacts
+mta_archives/
+.mta/
+*.mtar
+
+# ABAP - Eclipse/ADT artifacts
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+.settings/
+
+# ABAP - ABAP Git artifacts
+.abapgit.xml
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build and temporary files
+dist/
+build/
+tmp/
+temp/
+*.tmp
+
+# SAP Business Application Studio
+.che/
+.theia/
+
+# Credentials and sensitive data
+credentials.json
+*.key
+*.pem
+.env.local
+.env.*.local

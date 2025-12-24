@@ -1,0 +1,34 @@
+{
+  "name": "sap-learning-hub",
+  "version": "1.0.0",
+  "description": "SAP Learning Hub - Supporting both CAP and ABAP Projects",
+  "repository": "https://github.com/RJTechRamjee/SAPLearningHub",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "build": "cds build --production",
+    "deploy": "cds deploy"
+  },
+  "dependencies": {
+    "@sap/cds": "^7",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^7",
+    "sqlite3": "^5"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db/data.db"
+        }
+      }
+    }
+  }
+}

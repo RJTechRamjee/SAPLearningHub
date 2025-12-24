@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "name": "Root",
+      "path": "."
+    },
+    {
+      "name": "CAP Project",
+      "path": "cap-project"
+    },
+    {
+      "name": "ABAP Project",
+      "path": "abap-project"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/gen": true,
+      "**/*.db": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/gen": true,
+      "**/mta_archives": true
+    },
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "cds.autoExpose.defaultDraft": true
+  },
+  "extensions": {
+    "recommendations": [
+      "SAPSE.vscode-cds",
+      "SAPSE.sap-ux-fiori-tools-extension-pack",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  }
+}

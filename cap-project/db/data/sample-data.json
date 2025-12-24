@@ -1,0 +1,66 @@
+{
+  "sap.learning.Books": [
+    {
+      "ID": "f8a8c9e0-1234-4567-89ab-000000000001",
+      "title": "Introduction to SAP CAP",
+      "author": "SAP Press",
+      "stock": 15,
+      "price": 49.99
+    },
+    {
+      "ID": "f8a8c9e0-1234-4567-89ab-000000000002",
+      "title": "ABAP Objects",
+      "author": "Horst Keller",
+      "stock": 8,
+      "price": 59.99
+    },
+    {
+      "ID": "f8a8c9e0-1234-4567-89ab-000000000003",
+      "title": "SAP Fiori Implementation",
+      "author": "SAP Press",
+      "stock": 12,
+      "price": 54.99
+    },
+    {
+      "ID": "f8a8c9e0-1234-4567-89ab-000000000004",
+      "title": "Clean ABAP",
+      "author": "SAP Community",
+      "stock": 20,
+      "price": 0.00
+    }
+  ],
+  "sap.learning.Courses": [
+    {
+      "ID": "c0a8c9e0-1234-4567-89ab-000000000001",
+      "title": "Getting Started with CAP",
+      "description": "Learn the fundamentals of Cloud Application Programming Model",
+      "instructor": "John Doe",
+      "duration": 8,
+      "price": 299.00
+    },
+    {
+      "ID": "c0a8c9e0-1234-4567-89ab-000000000002",
+      "title": "ABAP for Beginners",
+      "description": "Complete introduction to ABAP programming language",
+      "instructor": "Jane Smith",
+      "duration": 16,
+      "price": 399.00
+    },
+    {
+      "ID": "c0a8c9e0-1234-4567-89ab-000000000003",
+      "title": "SAP Fiori Development",
+      "description": "Build modern SAP Fiori applications",
+      "instructor": "Mike Johnson",
+      "duration": 12,
+      "price": 349.00
+    },
+    {
+      "ID": "c0a8c9e0-1234-4567-89ab-000000000004",
+      "title": "RAP - RESTful ABAP Programming",
+      "description": "Master the new ABAP programming model",
+      "instructor": "Sarah Williams",
+      "duration": 10,
+      "price": 449.00
+    }
+  ]
+}
