@@ -23,12 +23,16 @@ module.exports = cds.service.impl(async function() {
 
   // After-read handler to add discount information
   this.after('READ', 'Books', (books) => {
-    if (Array.isArray(books)) {
-      books.forEach(book => {
+    // Handle both single book and array of books
+    const bookArray = Array.isArray(books) ? books : [books];
+    
+    bookArray.forEach(book => {
+      if (book) {
         // Add virtual discount field for books priced over 50
         book.hasDiscount = book.price > 50;
-      });
-    }
+      }
+    });
+    
     return books;
   });
 });

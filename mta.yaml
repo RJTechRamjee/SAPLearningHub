@@ -16,7 +16,7 @@ modules:
   # CAP Service Module
   - name: sap-learning-hub-srv
     type: nodejs
-    path: gen/srv
+    path: cap-project/gen/srv
     parameters:
       buildpack: nodejs_buildpack
     build-parameters:
@@ -31,7 +31,7 @@ modules:
   # Database Deployer Module
   - name: sap-learning-hub-db-deployer
     type: hdb
-    path: gen/db
+    path: cap-project/gen/db
     parameters:
       buildpack: nodejs_buildpack
     requires:
