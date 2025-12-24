@@ -9,8 +9,8 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npm ci
-        - npm run build
+        - cd cap-project && npm ci
+        - cd cap-project && cds build --production
 
 modules:
   # CAP Service Module
