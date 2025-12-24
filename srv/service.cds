@@ -6,6 +6,7 @@ service CatalogService {
     // ========== Core Entities ==========
 
     @odata.draft.enabled
+    @cds.redirection.target
     entity Courses              as
         projection on db.Courses {
             *,
@@ -17,6 +18,7 @@ service CatalogService {
         };
 
     entity Categories           as projection on db.Categories;
+    @cds.redirection.target
     entity LearningPaths        as projection on db.LearningPaths;
     entity Topics               as projection on db.Topics;
     entity Instructors          as projection on db.Instructors;
@@ -32,7 +34,7 @@ service CatalogService {
     // ========== Analytics View ==========
 
     @readonly
-    @Aggregation.ApplySupported.PropertyRestrictions: true
+    @(Aggregation.ApplySupported.PropertyRestrictions: true)
     entity CourseAnalytics      as
         projection on db.Courses {
             key ID,
@@ -40,15 +42,15 @@ service CatalogService {
                 title,
                 level,
                 status,
-                duration                                                   @Analytics.Measure @Aggregation.default: #SUM,
-                price                                                      @Analytics.Measure @Aggregation.default: #SUM,
+                duration                                                   @(Analytics.Measure: true, Aggregation.default: #SUM),
+                price                                                      @(Analytics.Measure: true, Aggregation.default: #SUM),
                 currency,
-                enrollmentCount                                            @Analytics.Measure @Aggregation.default: #SUM,
-                rating                                                     @Analytics.Measure @Aggregation.default: #AVG,
+                enrollmentCount                                            @(Analytics.Measure: true, Aggregation.default: #SUM),
+                rating                                                     @(Analytics.Measure: true, Aggregation.default: #AVG),
                 releaseDate,
-                categories.category.name            as categoryName        @Analytics.Dimension,
-                1                                   as courseCount : Integer @Analytics.Measure @Aggregation.default: #SUM,
-                duration * enrollmentCount          as totalLearningHours : Integer @Analytics.Measure @Aggregation.default: #SUM,
+                categories.category.name            as categoryName        @(Analytics.Dimension: true),
+                1                                   as courseCount : Integer @(Analytics.Measure: true, Aggregation.default: #SUM),
+                duration * enrollmentCount          as totalLearningHours : Integer @(Analytics.Measure: true, Aggregation.default: #SUM)
         };
 
     // ========== Hierarchical View for Tree ==========

@@ -15,7 +15,8 @@
     "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^2.6.3",
     "@sap/ux-specification": "^1.120.0",
-    "eslint": "^9"
+    "eslint": "^9",
+    "sqlite3": "^5.1.7"
   },
   "scripts": {
     "start": "cds-serve",
