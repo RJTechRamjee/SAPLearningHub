@@ -5,19 +5,30 @@ module.exports = cds.service.impl(async function() {
 
   // Sample event handler for Books
   this.before('CREATE', 'Books', async (req) => {
-    // Add business logic here
+    // Validate stock is non-negative
+    if (req.data.stock < 0) {
+      req.error(400, 'Stock cannot be negative');
+    }
     console.log('Creating a new book:', req.data.title);
   });
 
   // Sample event handler for Courses
   this.before('CREATE', 'Courses', async (req) => {
-    // Add business logic here
+    // Validate duration is positive
+    if (req.data.duration <= 0) {
+      req.error(400, 'Course duration must be positive');
+    }
     console.log('Creating a new course:', req.data.title);
   });
 
-  // Sample after-read handler
+  // After-read handler to add discount information
   this.after('READ', 'Books', (books) => {
-    // Add custom logic after reading books
+    if (Array.isArray(books)) {
+      books.forEach(book => {
+        // Add virtual discount field for books priced over 50
+        book.hasDiscount = book.price > 50;
+      });
+    }
     return books;
   });
 });

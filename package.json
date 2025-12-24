@@ -8,10 +8,10 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "cds serve",
-    "watch": "cds watch",
-    "build": "cds build --production",
-    "deploy": "cds deploy"
+    "start": "cd cap-project && cds serve",
+    "watch": "cd cap-project && cds watch",
+    "build": "cd cap-project && cds build --production",
+    "deploy": "cd cap-project && cds deploy"
   },
   "dependencies": {
     "@sap/cds": "^7",
@@ -20,15 +20,5 @@
   "devDependencies": {
     "@sap/cds-dk": "^7",
     "sqlite3": "^5"
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": "cap-project/db/data.db"
-        }
-      }
-    }
   }
 }

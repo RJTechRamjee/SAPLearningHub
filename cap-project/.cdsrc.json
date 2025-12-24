@@ -1,24 +1,24 @@
 {
   "build": {
-    "target": "gen",
+    "target": "../gen",
     "tasks": [
       {
         "for": "hana",
-        "src": "cap-project/db",
+        "src": "db",
         "options": {
           "model": [
-            "cap-project/db",
-            "cap-project/srv"
+            "db",
+            "srv"
           ]
         }
       },
       {
         "for": "nodejs",
-        "src": "cap-project/srv",
+        "src": "srv",
         "options": {
           "model": [
-            "cap-project/db",
-            "cap-project/srv"
+            "db",
+            "srv"
           ]
         }
       }
@@ -30,6 +30,9 @@
   "requires": {
     "db": {
       "kind": "sqlite",
+      "credentials": {
+        "database": "db/data.db"
+      },
       "[production]": {
         "kind": "hana"
       }

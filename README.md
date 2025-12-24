@@ -54,11 +54,12 @@ SAPLearningHub/
 git clone https://github.com/RJTechRamjee/SAPLearningHub.git
 cd SAPLearningHub
 
-# Install CAP dependencies
-npm install
+# Install CAP dependencies (optional - for global cds tools)
+npm install -g @sap/cds-dk
 
-# Start CAP development server
-npm run watch
+# Navigate to CAP project and start development server
+cd cap-project
+cds watch
 ```
 
 For detailed setup instructions, see [GETTING_STARTED.md](./GETTING_STARTED.md)
