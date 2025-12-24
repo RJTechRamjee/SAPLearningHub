@@ -1,0 +1,40 @@
+{
+  "name": "sap-learning-hub",
+  "version": "1.0.0",
+  "description": "SAP Learning Hub - A comprehensive CAP application for managing learning courses and paths",
+  "repository": "https://github.com/RJTechRamjee/SAPLearningHub",
+  "license": "ISC",
+  "engines": {
+    "node": "^18 || ^20"
+  },
+  "dependencies": {
+    "@sap/cds": "^7",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^2.6.3",
+    "@sap/ux-specification": "^1.120.0",
+    "eslint": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "build": "cds build",
+    "deploy": "cds deploy",
+    "undeploy": "cds undeploy"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db.sqlite"
+        }
+      }
+    },
+    "features": {
+      "fetch_csrf": true
+    }
+  }
+}
