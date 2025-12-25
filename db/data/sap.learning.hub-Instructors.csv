@@ -1,9 +1,0 @@
-ID;instructorID;firstName;lastName;email;bio;expertise;rating;photoURL
-1;INS001;Michael;Schmidt;michael.schmidt@saplearning.com;SAP Mentor with 15 years of experience in SAP development;S/4HANA, ABAP, Fiori;4.8;https://example.com/photos/instructor1.jpg
-2;INS002;Sarah;Johnson;sarah.johnson@saplearning.com;Cloud architect specializing in SAP BTP solutions;BTP, CAP, Cloud Foundry;4.9;https://example.com/photos/instructor2.jpg
-3;INS003;Raj;Kumar;raj.kumar@saplearning.com;Full-stack developer and UI/UX expert;Fiori, UI5, JavaScript;4.7;https://example.com/photos/instructor3.jpg
-4;INS004;Anna;Mueller;anna.mueller@saplearning.com;Integration specialist with extensive middleware experience;Integration Suite, APIs, EDI;4.6;https://example.com/photos/instructor4.jpg
-5;INS005;David;Chen;david.chen@saplearning.com;Database administrator and HANA expert;HANA, SQL, Performance;4.8;https://example.com/photos/instructor5.jpg
-6;INS006;Emma;Williams;emma.williams@saplearning.com;Analytics and BI consultant;SAC, Analytics, Reporting;4.7;https://example.com/photos/instructor6.jpg
-7;INS007;Thomas;Brown;thomas.brown@saplearning.com;Security and authorization specialist;Security, GRC, Compliance;4.5;https://example.com/photos/instructor7.jpg
-8;INS008;Lisa;Anderson;lisa.anderson@saplearning.com;AI and ML expert focusing on SAP AI services;AI, Machine Learning, Python;4.8;https://example.com/photos/instructor8.jpg
