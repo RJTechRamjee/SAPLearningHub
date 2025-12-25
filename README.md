@@ -125,15 +125,54 @@ This will:
 - Deploy the database schema to SQLite
 - Load sample data from CSV files
 - Start the OData V4 service at `http://localhost:4004`
-- Open Fiori launchpad at `http://localhost:4004`
+- Serve the Fiori launchpad configuration
 
-### Access Applications
+### Testing the Fiori Applications
 
-- **Fiori Launchpad**: http://localhost:4004/
-- **Course Catalog (List Report)**: http://localhost:4004/listreport/webapp/index.html
-- **Learning Paths (Tree View)**: http://localhost:4004/treeview/webapp/index.html
-- **Course Analytics**: http://localhost:4004/analytics/webapp/index.html
-- **OData Service**: http://localhost:4004/catalog/
+**Important**: The Fiori applications in this project are configured for deployment to SAP BTP. For local testing, you have several options:
+
+#### Option 1: Use SAP Fiori Tools (Recommended for Local Development)
+
+Install the SAP Fiori tools extension in VS Code:
+
+```bash
+# In VS Code
+# 1. Install "SAP Fiori tools - Extension Pack"
+# 2. Right-click on any app folder (e.g., app/listreport)
+# 3. Select "Preview Application"
+# 4. Choose "start fiori run --open 'test/flpSandbox.html'"
+```
+
+#### Option 2: Deploy to SAP BTP (Recommended for Full Testing)
+
+The Fiori Launchpad at `http://localhost:4004/app/index.html` requires external UI5 resources and is designed to work when deployed to SAP BTP. For full Fiori Launchpad experience with all three apps:
+
+```bash
+mbt build
+cf deploy mta_archives/sap-learning-hub_1.0.0.mtar
+```
+
+#### Option 3: Test the OData Services Directly
+
+You can test the backend services without the UI:
+
+```bash
+# Test Courses Service
+curl http://localhost:4004/catalog/Courses
+
+# Test Learning Paths
+curl http://localhost:4004/catalog/LearningPaths
+
+# Test Analytics
+curl http://localhost:4004/catalog/CourseAnalytics
+```
+
+### Access Points
+
+- **OData Service Metadata**: http://localhost:4004/catalog/$metadata
+- **OData Service Root**: http://localhost:4004/catalog/
+- **Fiori Launchpad Config**: http://localhost:4004/app/index.html (requires BTP deployment for full functionality)
+- **Direct App Access**: Available after deployment to BTP
 
 ## 🌥 Deployment
 
@@ -312,7 +351,64 @@ The application uses **SAP Authorization and Trust Management Service (XSUAA)** 
 
 For local development, authentication is disabled by default. The approuter and XSUAA are only required for cloud deployment.
 
+## 🔧 Troubleshooting
+
+### Fiori Launchpad Navigation Errors
+
+**Issue**: Error message "Failed to resolve navigation target" or "App could not be opened"
+
+**Solution**: This typically occurs when running the Fiori Launchpad locally (`http://localhost:4004/app/index.html`). The launchpad configuration has been updated with proper `crossNavigation` inbounds in each app's `manifest.json` and resolution results in `app/index.html`.
+
+**Fix Applied**:
+- ✅ Added `sap.app.crossNavigation.inbounds` to all three app manifests
+- ✅ Added `resolutionResult` with component paths to `app/index.html`
+- ✅ Configured proper semantic objects and actions
+
+**For Local Testing**:
+The Fiori apps in this project are designed for SAP BTP deployment. For local testing:
+
+1. **Use SAP Fiori Tools** in VS Code:
+   ```bash
+   # Install "SAP Fiori tools - Extension Pack"
+   # Right-click on app folder → Preview Application
+   ```
+
+2. **Deploy to BTP** for full Fiori Launchpad functionality:
+   ```bash
+   mbt build
+   cf deploy mta_archives/sap-learning-hub_1.0.0.mtar
+   ```
+
+3. **Test OData services** directly without UI:
+   ```bash
+   curl http://localhost:4004/catalog/Courses
+   ```
+
+### Missing Dependencies
+
+**Issue**: `cds: command not found`
+
+**Solution**:
+```bash
+npm install
+# OR install globally
+npm install -g @sap/cds-dk
+```
+
+### Port Already in Use
+
+**Issue**: Server won't start, port 4004 is busy
+
+**Solution**:
+```bash
+# Find and kill process
+lsof -ti:4004 | xargs kill
+# OR use different port
+cds watch --port 4005
+```
+
 ## 🛠 Development
+
 
 ### Adding New Data
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SAP Learning Hub - App Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .app-link {
+            display: block;
+            padding: 15px;
+            margin: 10px 0;
+            background: #0854a0;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .app-link:hover {
+            background: #0a6ed1;
+        }
+        h1 {
+            color: #0854a0;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-left: 4px solid #0854a0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>SAP Learning Hub - Direct App Access</h1>
+    
+    <div class="info">
+        <strong>Note:</strong> The Fiori Launchpad at <code>/app/index.html</code> requires external UI5 resources from ui5.sap.com. 
+        If those are blocked, you can access the applications directly using the links below.
+    </div>
+
+    <h2>Available Applications:</h2>
+    
+    <a href="/listreport/webapp/index.html" class="app-link">
+        📚 Course Catalog (List Report)
+    </a>
+    
+    <a href="/treeview/webapp/index.html" class="app-link">
+        🗺️ Learning Paths (Tree View)
+    </a>
+    
+    <a href="/analytics/webapp/index.html" class="app-link">
+        📊 Course Analytics (Analytical List Page)
+    </a>
+
+    <h2>Fiori Launchpad:</h2>
+    
+    <a href="/app/index.html" class="app-link">
+        🚀 Open Fiori Launchpad (requires ui5.sap.com access)
+    </a>
+
+    <div class="info">
+        <strong>For Production:</strong> Deploy to SAP BTP where the Fiori Launchpad will work properly 
+        with all navigation and tiles configured correctly.
+    </div>
+</body>
+</html>
