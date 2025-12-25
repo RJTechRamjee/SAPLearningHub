@@ -1,0 +1,14 @@
+{
+  "build": {
+    "target": "."
+  },
+  "odata": {
+    "version": "v4"
+  },
+  "features": {
+    "fetch_csrf": true
+  },
+  "sql": {
+    "native_hana_associations": false
+  }
+}

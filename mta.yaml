@@ -1,0 +1,221 @@
+_schema-version: '3.1'
+ID: sap-learning-hub
+version: 1.0.0
+description: SAP Learning Hub - CAP Application
+parameters:
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+
+modules:
+  # Database Deployer Module
+  - name: sap-learning-hub-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 1024M
+    requires:
+      - name: sap-learning-hub-db
+
+  # Server Module
+  - name: sap-learning-hub-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 512M
+      disk-quota: 1024M
+    properties:
+      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: sap-learning-hub-db
+      - name: sap-learning-hub-uaa
+      - name: sap-learning-hub-destination
+      - name: sap-learning-hub-connectivity
+
+  # Approuter Module
+  - name: sap-learning-hub-approuter
+    type: approuter.nodejs
+    path: app-router
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 512M
+      keep-existing-routes: true
+    properties:
+      TENANT_HOST_PATTERN: '^(.*)-${default-uri}'
+    requires:
+      - name: sap-learning-hub-uaa
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          url: ~{srv-url}
+          forwardAuthToken: true
+          timeout: 600000
+      - name: sap-learning-hub-destination
+      - name: sap-learning-hub-connectivity
+
+  # UI Deployer Module for Fiori Launchpad
+  - name: sap-learning-hub-ui-deployer
+    type: com.sap.application.content
+    path: app
+    requires:
+      - name: sap-learning-hub-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: listreport
+          artifacts:
+            - listreport.zip
+          target-path: resources/
+        - name: treeview
+          artifacts:
+            - treeview.zip
+          target-path: resources/
+        - name: analytics
+          artifacts:
+            - analytics.zip
+          target-path: resources/
+
+  # Fiori App 1: List Report
+  - name: listreport
+    type: html5
+    path: app/listreport
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms: []
+
+  # Fiori App 2: Tree View
+  - name: treeview
+    type: html5
+    path: app/treeview
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms: []
+
+  # Fiori App 3: Analytics
+  - name: analytics
+    type: html5
+    path: app/analytics
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms: []
+
+  # Destination Content Module
+  - name: sap-learning-hub-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: sap-learning-hub-uaa
+        parameters:
+          service-key:
+            name: sap-learning-hub-uaa-key
+      - name: sap-learning-hub-html5-repo-host
+        parameters:
+          service-key:
+            name: sap-learning-hub-html5-repo-host-key
+      - name: srv-api
+      - name: sap-learning-hub-destination
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: sap_learning_hub_html5_repo_host
+              ServiceInstanceName: sap-learning-hub-html5-repo-host
+              ServiceKeyName: sap-learning-hub-html5-repo-host-key
+              sap.cloud.service: sap.learning.hub
+            - Name: sap_learning_hub_uaa
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: sap-learning-hub-uaa
+              ServiceKeyName: sap-learning-hub-uaa-key
+              sap.cloud.service: sap.learning.hub
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+
+resources:
+  # HDI Container
+  - name: sap-learning-hub-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: ${service-name}
+
+  # UAA Service
+  - name: sap-learning-hub-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: sap-learning-hub-${org}-${space}
+        tenant-mode: dedicated
+        role-collections: []
+
+  # Destination Service
+  - name: sap-learning-hub-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+              - Name: ui5
+                Type: HTTP
+                URL: https://ui5.sap.com
+                Authentication: NoAuthentication
+            existing_destinations_policy: update
+
+  # Connectivity Service
+  - name: sap-learning-hub-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+
+  # HTML5 Application Repository
+  - name: sap-learning-hub-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  # HTML5 Application Runtime
+  - name: sap-learning-hub-html5-repo-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime

@@ -1,0 +1,145 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "sap.learning.hub.analytics",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:alp",
+      "version": "1.12.0"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "analytics-display": {
+          "semanticObject": "analytics",
+          "action": "display",
+          "title": "{{appTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": false
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.suite.ui.generic.template": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.learning.hub.analytics.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "AnalyticalListPage",
+          "target": "AnalyticalListPage"
+        }
+      ],
+      "targets": {
+        "AnalyticalListPage": {
+          "type": "Component",
+          "id": "AnalyticalListPage",
+          "name": "sap.suite.ui.generic.template.AnalyticalListPage",
+          "options": {
+            "settings": {
+              "entitySet": "CourseAnalytics",
+              "qualifier": "Default",
+              "tableSettings": {
+                "type": "AnalyticalTable",
+                "multiSelect": false
+              },
+              "chartSettings": {
+                "showDataLabel": true
+              },
+              "filterSettings": {
+                "dateSettings": {
+                  "useDateRange": true
+                }
+              },
+              "smartVariantManagement": true,
+              "showAutoHide": true,
+              "condensedTableLayout": false,
+              "enableTableFilterInPageVariant": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "sap.learning.hub"
+  }
+}

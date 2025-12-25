@@ -1,0 +1,72 @@
+{
+  "xsappname": "sap-learning-hub",
+  "tenant-mode": "dedicated",
+  "description": "Security descriptor for SAP Learning Hub",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Administrator"
+    },
+    {
+      "name": "$XSAPPNAME.Instructor",
+      "description": "Instructor"
+    },
+    {
+      "name": "$XSAPPNAME.Learner",
+      "description": "Learner"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator role with full access",
+      "scope-references": [
+        "$XSAPPNAME.Admin",
+        "$XSAPPNAME.Instructor",
+        "$XSAPPNAME.Learner"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "Instructor",
+      "description": "Instructor role with course management access",
+      "scope-references": [
+        "$XSAPPNAME.Instructor",
+        "$XSAPPNAME.Learner"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "Learner",
+      "description": "Learner role with read-only access",
+      "scope-references": [
+        "$XSAPPNAME.Learner"
+      ],
+      "attribute-references": []
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "SAPLearningHub_Admin",
+      "description": "SAP Learning Hub Administrator",
+      "role-template-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "SAPLearningHub_Instructor",
+      "description": "SAP Learning Hub Instructor",
+      "role-template-references": [
+        "$XSAPPNAME.Instructor"
+      ]
+    },
+    {
+      "name": "SAPLearningHub_Learner",
+      "description": "SAP Learning Hub Learner",
+      "role-template-references": [
+        "$XSAPPNAME.Learner"
+      ]
+    }
+  ]
+}
